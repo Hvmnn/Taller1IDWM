@@ -475,3 +475,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+#sql database
+*.db
+*.db-shm
+*.db-wal
+
+#migrations
+Migrations/
