@@ -13,4 +13,14 @@ public class UserRepository(DataContext dataContext) : IUserRepository
     {
         return await _dataContext.Users.AnyAsync(user => user.Email == email);
     }
+
+    public async Task<bool> UserExistsByRutAsync(string rut)
+    {
+        return await _dataContext.Users.AnyAsync(user => user.Rut == rut);
+    }
+
+    public async Task<bool> SaveChangesAsync()
+    {
+        return 0 < await _dataContext.SaveChangesAsync();
+    }    
 } 
