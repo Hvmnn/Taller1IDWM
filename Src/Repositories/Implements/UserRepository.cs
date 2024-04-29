@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Taller1IDWM.Src.Data;
 using Taller1IDWM.Src.Models;
 using Taller1IDWM.Src.Repositories.Interfaces;
