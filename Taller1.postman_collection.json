@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "2b125cf9-c727-4a01-b9dc-f910b47344db",
+		"name": "Taller1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33669932"
+	},
+	"item": [
+		{
+			"name": "Add Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"ProductoGenial\",\r\n    \"price\": 2500,\r\n    \"stock\": 30,\r\n    \"imageurl\": \"hola.mundo\",\r\n    \"categoryId\": 7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/product",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api",
+			"value": "http://localhost:5258/api",
+			"type": "string"
+		}
+	]
+}
