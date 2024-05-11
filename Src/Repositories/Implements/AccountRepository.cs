@@ -22,7 +22,7 @@ public class AccountRepository(DataContext dataContext, IMapper mapper, ITokenSe
 
     public async Task AddAccountAsync(RegisterDto registerDto)
     {
-        Role clientRole = await _dataContext.Roles.FirstAsync(x => x.Name == "Client");
+        Role clientRole = await _dataContext.Roles.FirstAsync(x => x.Name == "User");
 
         User user = 
             new()
