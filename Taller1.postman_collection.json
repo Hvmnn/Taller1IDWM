@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "2b125cf9-c727-4a01-b9dc-f910b47344db",
+		"_postman_id": "c050177c-9ed7-45d6-bf2c-db700f241c4e",
 		"name": "Taller1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33669932"
+		"_exporter_id": "31393374"
 	},
 	"item": [
 		{
@@ -27,6 +27,60 @@
 					],
 					"path": [
 						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"rut\": \"207842419\",\r\n    \"name\": \"Felipe Hamen\",\r\n    \"birthdate\": \"2001-06-28\",\r\n    \"email\": \"felipe.hamen@alumnos.ucn.cl\",\r\n    \"gender\": \"Masculino\",\r\n    \"password\": \"password123\",\r\n    \"confirmPassword\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/account/register",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"account",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"felipe.hamen@alumnos.ucn.cl\",\r\n    \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/account/login",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"account",
+						"login"
 					]
 				}
 			},
