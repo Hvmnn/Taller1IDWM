@@ -75,4 +75,9 @@ public class UserRepository(DataContext dataContext) : IUserRepository
         var users = await _dataContext.Users.Where(u => u.RoleId == 2).ToListAsync();
         return users;
     }
+
+    public Task<bool> EnableDisableUser()
+    {
+        throw new NotImplementedException();
+    }
 } 
