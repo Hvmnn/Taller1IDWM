@@ -13,20 +13,17 @@ namespace Taller1IDWM.Src.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/[controller]")]
-public class UserController (IUserRepository userRepository, IMapper mapper): ControllerBase
+public class AdminController (IUserRepository userRepository, IMapper mapper): ControllerBase
 {
     private readonly IUserRepository _userRepository = userRepository;
     private readonly IMapper _mapper = mapper;
 
-    [HttpPut("{id}")]
-    public async Task<string> EditUser(int id, [FromBody] EditUserDto editUser)
+    [HttpGet("users")]
+    public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
     {
-        if(await _userRepository.EditUser(id, editUser))
-        {
-            return "User updated succesfully";
-        }
-
-        return "User not found"; 
+        var users = await _userRepository.GetUsers();
+        var userDtos = _mapper.Map<IEnumerable<UserDto>>(users);
+        return Ok(userDtos);
     }
 
 }
