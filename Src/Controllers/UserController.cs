@@ -18,7 +18,7 @@ public class UserController (IUserRepository userRepository, IMapper mapper): Co
     private readonly IUserRepository _userRepository = userRepository;
     private readonly IMapper _mapper = mapper;
 
-    [HttpPut("{id}")]
+    [HttpPut("editUser/{id}")]
     public async Task<string> EditUser(int id, [FromBody] EditUserDto editUser)
     {
         if(await _userRepository.EditUser(id, editUser))
@@ -27,6 +27,17 @@ public class UserController (IUserRepository userRepository, IMapper mapper): Co
         }
 
         return "User not found"; 
+    }
+
+    [HttpPut("editPassword/{id}")]
+    public async Task<string> EditPassword(int id, [FromBody] EditPasswordDto editPassword)
+    {
+        if(await _userRepository.EditPassword(id, editPassword))
+        {
+            return "Password updated succesfully";
+        }
+
+        return "User not found";
     }
 
 }

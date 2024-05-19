@@ -43,9 +43,31 @@ public class UserRepository(DataContext dataContext) : IUserRepository
         return true;
     }
 
-    public Task<bool> EditPassword(EditPasswordDto editPassword)
+    public async Task<bool> EditPassword(int id, EditPasswordDto editPassword)
     {
-        throw new NotImplementedException();
+        var existUser = await _dataContext.Users.FindAsync(id);
+        if(existUser == null)
+        {
+            return false;
+        }
+
+        if (!BCrypt.Net.BCrypt.Verify(editPassword.Password, existUser.Password))
+        {
+            return false;
+        }
+
+        if (editPassword.NewPassword != editPassword.ConfirmNewPassword)
+        {
+            return false;
+        }
+
+        existUser.Password = BCrypt.Net.BCrypt.HashPassword(editPassword.NewPassword);
+
+        _dataContext.Entry(existUser).State = EntityState.Modified;
+        await _dataContext.SaveChangesAsync();
+
+        return true;
+
     }
 
     public async Task<IEnumerable<User>> GetUsers()

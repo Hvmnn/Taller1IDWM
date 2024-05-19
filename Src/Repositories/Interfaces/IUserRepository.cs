@@ -9,6 +9,6 @@ public interface IUserRepository
     Task<bool> UserExistsByRutAsync(string rut);
     Task<bool> SaveChangesAsync();
     Task<bool> EditUser (int id, EditUserDto editUser);
-    Task<bool> EditPassword (EditPasswordDto editPassword);
+    Task<bool> EditPassword (int id, EditPasswordDto editPassword);
     Task<IEnumerable<User>> GetUsers();
 }
