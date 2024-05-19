@@ -85,6 +85,148 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/admin/users",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"Nicolas Santander\",\r\n\"birthdate\": \"1999-11-20\",\r\n\"gender\": \"Otro\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/user/edit-user/12",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"user",
+						"edit-user",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"password\": \"password123\",\r\n\"newPassword\": \"password12\",\r\n\"confirmNewPassword\": \"password12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/user/edit-password/12",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"user",
+						"edit-password",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"isEnabled\": \"0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/admin/enable-disable/12",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"admin",
+						"enable-disable",
+						"12"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
