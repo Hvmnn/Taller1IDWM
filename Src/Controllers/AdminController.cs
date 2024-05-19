@@ -11,7 +11,7 @@ using Taller1IDWM.Src.Repositories.Interfaces;
 namespace Taller1IDWM.Src.Controllers;
 
 [ApiController]
-[Authorize]
+[Authorize(Roles = "Admin")]
 [Route("api/[controller]")]
 public class AdminController (IUserRepository userRepository, IMapper mapper): ControllerBase
 {
