@@ -25,9 +25,22 @@ public class UserRepository(DataContext dataContext) : IUserRepository
         return 0 < await _dataContext.SaveChangesAsync();
     }
 
-    public Task<bool> EditUser(int id, EditUserDto editUser)
+    public async Task<bool> EditUser(int id, EditUserDto editUser)
     {
-        throw new NotImplementedException();
+        var existUser = await _dataContext.Users.FindAsync(id);
+        if(existUser == null)
+        {
+            return false;
+        }
+
+        existUser.Name = editUser.Name ?? existUser.Name;
+        existUser.Gender = editUser.Gender ?? existUser.Gender;
+        existUser.Birthdate = editUser.Birthdate != default ? editUser.Birthdate : existUser.Birthdate;
+        
+        _dataContext.Entry(existUser).State = EntityState.Modified;
+        await _dataContext.SaveChangesAsync();
+
+        return true;
     }
 
     public Task<bool> EditPassword(EditPasswordDto editPassword)

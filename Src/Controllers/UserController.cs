@@ -25,4 +25,15 @@ public class UserController (IUserRepository userRepository, IMapper mapper): Co
         var userDtos = _mapper.Map<IEnumerable<UserDto>>(users);
         return Ok(userDtos);
     }
+
+    [HttpPut("{id}")]
+    public async Task<string> EditUser(int id, [FromBody] EditUserDto editUser)
+    {
+        if(await _userRepository.EditUser(id, editUser))
+        {
+            return "User updated succesfully";
+        }
+
+        return "User not found"; 
+    }
 }
