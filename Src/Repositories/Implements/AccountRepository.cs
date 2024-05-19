@@ -57,6 +57,7 @@ public class AccountRepository(DataContext dataContext, IMapper mapper, ITokenSe
                 Birthdate = user.Birthdate,
                 Email = user.Email,
                 Gender = user.Gender,
+                IsEnabled = user.IsEnabled,
                 Token = _tokenService.CreateToken(user.Rut, user.Role.Name)
             };
 
