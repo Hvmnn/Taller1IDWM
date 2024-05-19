@@ -26,4 +26,21 @@ public class AdminController (IUserRepository userRepository, IMapper mapper): C
         return Ok(userDtos);
     }
 
+    [HttpPut("enable-disable/{id}")]
+    public async Task<IActionResult> EnableDisableUser(int id, [FromBody] EnableDisableUserDto enableDisableUser)
+    {
+        if (enableDisableUser.IsEnabled != 0 && enableDisableUser.IsEnabled != 1)
+        {
+            return BadRequest("Invalid value for IsEnabled");
+        }
+
+        var result = await _userRepository.EnableDisableUser(id, enableDisableUser);
+        if(result)
+        {
+            return Ok("User status updated succesfully");
+        }
+
+        return NotFound("User not found");
+    }
+
 }

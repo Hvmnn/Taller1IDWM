@@ -11,5 +11,5 @@ public interface IUserRepository
     Task<bool> EditUser (int id, EditUserDto editUser);
     Task<bool> EditPassword (int id, EditPasswordDto editPassword);
     Task<IEnumerable<User>> GetUsers();
-    Task<bool> EnableDisableUser();
+    Task<bool> EnableDisableUser(int id, EnableDisableUserDto enableDisableUser);
 }

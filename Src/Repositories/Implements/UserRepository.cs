@@ -76,8 +76,24 @@ public class UserRepository(DataContext dataContext) : IUserRepository
         return users;
     }
 
-    public Task<bool> EnableDisableUser()
+    public async Task<bool> EnableDisableUser(int id, EnableDisableUserDto enableDisableUser)
     {
-        throw new NotImplementedException();
+        var existUser = await _dataContext.Users.FindAsync(id);
+        if(existUser == null)
+        {
+            return false;
+        }
+
+        if(enableDisableUser.IsEnabled != 0 && enableDisableUser.IsEnabled !=1)
+        {
+            throw new ArgumentException("Invalid value for IsEnabled");
+        }
+
+        existUser.IsEnabled = enableDisableUser.IsEnabled;
+
+        _dataContext.Entry(existUser).State = EntityState.Modified;
+        await _dataContext.SaveChangesAsync();
+
+        return true;
     }
 } 
