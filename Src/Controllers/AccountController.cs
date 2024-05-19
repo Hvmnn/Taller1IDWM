@@ -49,6 +49,11 @@ public class AccountController (IAccountRepository accountRepository, IUserRepos
 
         AccountDto? accountDto = await _accountRepository.GetAccountAsync(loginDto.Email);
 
+        if (accountDto == null || accountDto.IsEnabled == 0)
+        {
+            return TypedResults.BadRequest("User is disabled");
+        }
+
         return TypedResults.Ok(accountDto);
     }
 }
