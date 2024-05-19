@@ -34,4 +34,10 @@ public class UserRepository(DataContext dataContext) : IUserRepository
     {
         throw new NotImplementedException();
     }
+
+    public async Task<IEnumerable<User>> GetUsers()
+    {
+        var users = await _dataContext.Users.Where(u => u.RoleId == 2).ToListAsync();
+        return users;
+    }
 } 
