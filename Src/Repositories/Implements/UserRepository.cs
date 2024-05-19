@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Taller1IDWM.Src.Data;
+using Taller1IDWM.Src.DTOs.User;
 using Taller1IDWM.Src.Models;
 using Taller1IDWM.Src.Repositories.Interfaces;
 
@@ -22,5 +23,15 @@ public class UserRepository(DataContext dataContext) : IUserRepository
     public async Task<bool> SaveChangesAsync()
     {
         return 0 < await _dataContext.SaveChangesAsync();
-    }    
+    }
+
+    public Task<bool> EditUser(int id, EditUserDto editUser)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> EditPassword(EditPasswordDto editPassword)
+    {
+        throw new NotImplementedException();
+    }
 } 
