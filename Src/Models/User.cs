@@ -11,5 +11,6 @@ public class User
     public required string Password {get; set;}
     public int RoleId {get; set;}
     public required Role Role {get;set;}
+    public int IsEnabled {get;set;} = 1;
 
 }
