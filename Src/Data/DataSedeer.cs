@@ -71,6 +71,7 @@ namespace Taller1IDWM.Src.Data
                         var users = faker.Generate(10);
                         foreach (User user in users){
                             if (false == context.Users.Any(x => x.Rut == user.Rut || x.Email == user.Email)){
+                                user.Email = user.Email.ToLower();
                                 context.Users.AddRange(user);
                                 context.SaveChanges();                                
                             }
