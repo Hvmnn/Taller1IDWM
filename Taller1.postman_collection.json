@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"ProductoGenial\",\r\n    \"price\": 2500,\r\n    \"stock\": 30,\r\n    \"imageurl\": \"hola.mundo\",\r\n    \"categoryId\": 7\r\n}",
+					"raw": "{\r\n    \"name\": \"ProductoGenialBeta\",\r\n    \"price\": 2500,\r\n    \"stock\": 30,\r\n    \"imageurl\": \"hola.mundo\",\r\n    \"categoryId\": 4\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -27,6 +27,147 @@
 					],
 					"path": [
 						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/category",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/product",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/product/3",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"product",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"ProductoAsombroso\",\r\n    \"price\": 2500,\r\n    \"stock\": 30,\r\n    \"imageurl\": \"hola.mundo\",\r\n    \"categoryId\": 6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/product/1",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"product",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Make Sale",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"salestock\": 2,\r\n    \"productid\": 3,\r\n    \"userid\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/sale",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"sale"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sales",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/sale",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"sale"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Sales",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/sale/user/2",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"sale",
+						"user",
+						"2"
 					]
 				}
 			},
