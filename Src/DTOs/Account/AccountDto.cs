@@ -19,5 +19,7 @@ public class AccountDto
 
     public required string Gender{get;set;}
 
+    public required int IsEnabled{get;set;}
+
     public required string Token {get;set;}
 }

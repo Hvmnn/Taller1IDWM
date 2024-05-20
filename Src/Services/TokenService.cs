@@ -9,35 +9,24 @@ namespace Taller1IDWM.Src.Services;
 
 public class TokenService (IConfiguration config) : ITokenService
 {
-    private readonly SymmetricSecurityKey _key =
-        new(
-            Encoding.UTF8.GetBytes(
-                config["TokenKey"] ?? throw new InvalidOperationException("Token key not found")
-            )
-        );
-
     public string CreateToken(string rut, string nameRole)
     {
-        var claims = new List<Claim>
-        {
-            new(ClaimTypes.NameIdentifier, rut),
-            new(ClaimTypes.Role, nameRole)
-        };
-        
-        var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
+            var claims = new List<Claim>{
+                new (ClaimTypes.Role, nameRole)
+            };
 
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Subject = new ClaimsIdentity(claims),
-            Expires = DateTime.UtcNow.AddMinutes(30),
-            SigningCredentials = creds
-        };
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
+                    config.GetSection("AppSettings:Token").Value!));
 
-        var tokenHandler = new JwtSecurityTokenHandler();
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
+            var token = new JwtSecurityToken(
+                claims: claims,
+                expires: DateTime.Now.AddHours(2),
+                signingCredentials: creds
+            );
 
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-
-        return tokenHandler.WriteToken(token);
+            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+            return jwt;
     }
 
 }

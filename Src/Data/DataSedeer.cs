@@ -65,7 +65,8 @@ namespace Taller1IDWM.Src.Data
                         .RuleFor(u => u.Email, f => f.Internet.Email())
                         .RuleFor(u => u.Password, f => BCrypt.Net.BCrypt.HashPassword("password"))
                         .RuleFor(u => u.RoleId, f => userRole.Id)
-                        .RuleFor(u => u.Role, f => userRole);
+                        .RuleFor(u => u.Role, f => userRole)
+                        .RuleFor(u => u.IsEnabled, f => 1);
 
                         var users = faker.Generate(10);
                         foreach (User user in users){
