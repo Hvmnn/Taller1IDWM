@@ -1,18 +1,21 @@
-using Taller1IDWM.Src.DTOs;
-using Taller1IDWM.Src.Models;
+using Taller1IDWM.Src.DTOs.Product;
 
 namespace Taller1IDWM.Src.Repositories.Interfaces;
 public interface IProductRepository
 {
-    Task<IEnumerable<ProductDto>> GetProducts();
+    Task<IEnumerable<GetProductDto>> GetProducts();
 
-    Task<bool> EditProduct(int id, ProductDto editProductDto);
+    Task<bool> EditProduct(int id, AddEditProductDto editProductDto);
 
     Task<bool> DeleteProduct(int id);
 
-    Task AddProduct(ProductDto addProductDto);
+    Task AddProduct(AddEditProductDto addProductDto);
 
-    Task<bool> ProductExistsByName(string name);
+    Task<bool> ProductExistsByNameAndType(AddEditProductDto addProductDto);
+
+    Task<bool> ProductExistsById(int id);
+
+    Task<bool> reduceStock(int id, int stockToReduce);
 
     Task<bool> SaveChangesAsync();
 }

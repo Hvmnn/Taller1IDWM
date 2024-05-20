@@ -25,4 +25,9 @@ public class CategoryRepository : ICategoryRepository
         var category = await _context.Categories.Where(r => r.Name == name).FirstOrDefaultAsync();
         return category;
     }
+
+    public async Task<IEnumerable<Category>> GetCategories(){
+        var categories = await _context.Categories.ToListAsync();
+        return categories;
+    }
 }

@@ -1,8 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Taller1IDWM.Src.Models;
-public class ProductDto
+namespace Taller1IDWM.Src.DTOs.Product;
+public class AddEditProductDto
 {
     [StringLength(64, MinimumLength = 10, ErrorMessage = "El nombre debe tener entre 10 a 64 caracteres")]
     [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "El nombre debe ser una cadena alfabéfica")]

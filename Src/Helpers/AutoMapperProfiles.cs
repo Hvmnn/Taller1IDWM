@@ -1,5 +1,6 @@
 using AutoMapper;
 using Taller1IDWM.Src.DTOs.Account;
+using Taller1IDWM.Src.DTOs.Product;
 using Taller1IDWM.Src.DTOs.User;
 using Taller1IDWM.Src.Models;
 
@@ -9,7 +10,16 @@ public class AutoMapperProfiles : Profile
 {
     public AutoMapperProfiles()
     {
-        CreateMap<ProductDto, Product>();
+        CreateMap<Category, CategoryDto>();
+        CreateMap<AddEditProductDto, Product>();
+        CreateMap<User, CredentialDto>();
+        CreateMap<User, UserDto>();
+        CreateMap<User, GetUserDto>();
+        CreateMap<Product, GetProductDto>();
+        CreateMap<Product, GetProductSaleDto>();
+        CreateMap<MakeSaleDto, Sale>();
+        CreateMap<Sale, GetSaleDto>();
+        CreateMap<Sale, GetUserSaleDto>();
         CreateMap<User, CredentialDto>();
         CreateMap<User, UserDto>();
     }

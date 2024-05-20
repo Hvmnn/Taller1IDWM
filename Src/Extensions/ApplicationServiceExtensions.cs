@@ -24,6 +24,7 @@ public static class ApplicationServiceExtensions
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<IRoleRepository, RoleRepository>();
+        services.AddScoped<ISaleRepository, SaleRepository>();
         services.AddScoped<ITokenService, TokenService>();
 
         return services;

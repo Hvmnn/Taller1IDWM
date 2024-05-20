@@ -96,4 +96,9 @@ public class UserRepository(DataContext dataContext) : IUserRepository
 
         return true;
     }
-} 
+
+    public async Task<bool> UserExistsById(int id)
+    {
+        return await _dataContext.Users.AnyAsync(x => x.Id == id);
+    }
+}
