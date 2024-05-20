@@ -18,7 +18,7 @@ public static class WebApplicationExtensions
         {
             var context = services.GetRequiredService<DataContext>();
             context.Database.Migrate();
-            //Seeder.Seed(context);
+            DataSeeder.Initialize(services);
         }
         catch (Exception ex)
         {
