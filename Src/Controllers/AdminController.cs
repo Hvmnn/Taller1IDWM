@@ -18,6 +18,10 @@ public class AdminController (IUserRepository userRepository, IMapper mapper): C
     private readonly IUserRepository _userRepository = userRepository;
     private readonly IMapper _mapper = mapper;
 
+    /// <summary>
+    /// Metodo que se encarga de obtener la lista de los clientes.
+    /// </summary>
+    /// <returns>Retorna todos los usuarios que son clientes con sus detalles.</returns>
     [HttpGet("users")]
     public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
     {
@@ -26,6 +30,21 @@ public class AdminController (IUserRepository userRepository, IMapper mapper): C
         return Ok(userDtos);
     }
 
+    /// <summary>
+    /// Metodo que se encarga de deshabilitar o habilitar a los usuarios
+    /// </summary>
+    /// <param name="id">Id del usuario.</param>
+    /// <param name="enableDisableUser">Dto que rellena el campo (IsEnabled) que se cambia.</param>
+    /// <returns>Retorna el usuario deshabilitado/habilitado, 
+    /// retorna un msje de valores invalidos (mayor a 1 o menor a 0), 
+    /// sino retorna que el usuario no se encuentra.</returns> <summary>
+    /// 
+    /// </summary>
+    /// <param name="id">Id del usuario.</param>
+    /// <param name="enableDisableUser">Dto que rellena el campo (IsEnabled) que se cambia.</param>
+    /// <returns>Retorna el usuario deshabilitado/habilitado, 
+    /// o retorna un msje de valores invalidos (mayor a 1 o menor a 0), 
+    /// sino retorna que el usuario no se encuentra.</returns>
     [HttpPut("enable-disable/{id}")]
     public async Task<IActionResult> EnableDisableUser(int id, [FromBody] EnableDisableUserDto enableDisableUser)
     {

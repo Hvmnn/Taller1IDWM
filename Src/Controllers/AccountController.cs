@@ -11,6 +11,11 @@ public class AccountController (IAccountRepository accountRepository, IUserRepos
     private readonly IUserRepository _userRepository = userRepository;
     private readonly IAccountRepository _accountRepository = accountRepository;
 
+    /// <summary>
+    /// Metodo que se encarga del registro de los clientes.
+    /// </summary>
+    /// <param name="registerDto">Dto que se encarga de rellenar los campos necesarios para registrar al cliente.</param>
+    /// <returns>Retorna el cliente ya registrado.</returns>
     [HttpPost("register")]
     public async Task<IResult> Register(RegisterDto registerDto)
     {
@@ -31,6 +36,11 @@ public class AccountController (IAccountRepository accountRepository, IUserRepos
         return TypedResults.Ok(accountDto);
     }
 
+    /// <summary>
+    /// Metodo que se encarga de permitir iniciar sesion a los clientes.
+    /// </summary>
+    /// <param name="loginDto">Dto que se encarga de verificar las variables para iniciar sesion.</param>
+    /// <returns>Retorna el usuario con su informacion y el token.</returns>
     [HttpPost("login")]
     public async Task<IResult> Login(LoginDto loginDto)
     {

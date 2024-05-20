@@ -18,6 +18,12 @@ public class UserController (IUserRepository userRepository, IMapper mapper): Co
     private readonly IUserRepository _userRepository = userRepository;
     private readonly IMapper _mapper = mapper;
 
+    /// <summary>
+    /// Metodo para editar la informacion del usuario.
+    /// </summary>
+    /// <param name="id">Id del usuario.</param>
+    /// <param name="editUser">Dto que se encarga de rellenar los campos que se quieren editar.</param>
+    /// <returns>Retorna el usuario con su informacion ya editada, caso contrario retorna que no se encuentra.</returns>
     [HttpPut("edit-user/{id}")]
     public async Task<string> EditUser(int id, [FromBody] EditUserDto editUser)
     {
@@ -29,6 +35,12 @@ public class UserController (IUserRepository userRepository, IMapper mapper): Co
         return "User not found"; 
     }
 
+    /// <summary>
+    /// Metodo que se encarga de cambiar la password del usuario.
+    /// </summary>
+    /// <param name="id">Id del usuario.</param>
+    /// <param name="editPassword">Dto que se encarga de rellenar los campos para despues verificar el cambio. </param>
+    /// <returns>Retorna el usuario con su password cambiada, caso contrario retorna que no se encuentra.</returns>
     [HttpPut("edit-password/{id}")]
     public async Task<string> EditPassword(int id, [FromBody] EditPasswordDto editPassword)
     {
