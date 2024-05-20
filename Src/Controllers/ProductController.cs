@@ -18,6 +18,7 @@ public class ProductController(IProductRepository productRepository, ICategoryRe
 /// <param name="addProductDto">producto a agregar</param>
 /// <returns>bad request si ocurre algun error al intentar agregar el producto, created si se logra agregar</returns>
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<IResult> AddProduct(AddEditProductDto addProductDto)
     {
         if (await _productRepository.ProductExistsByNameAndType(addProductDto))
@@ -45,6 +46,7 @@ public class ProductController(IProductRepository productRepository, ICategoryRe
 /// <param name="id">id dle producto a eliminar</param>
 /// <returns>not found si no encuentra la id, bad request si falla la eliminación, ok si se logra eliminar</returns>
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<IResult> DeleteProduct(int id)
     {
         if (false == await _productRepository.DeleteProduct(id))
@@ -64,6 +66,7 @@ public class ProductController(IProductRepository productRepository, ICategoryRe
 /// </summary>
 /// <returns>lista de los productos</returns>
     [HttpGet]
+    [Authorize]
     public async Task<IResult> GetProducts()
     {
 
@@ -77,13 +80,9 @@ public class ProductController(IProductRepository productRepository, ICategoryRe
 /// <param name="editProductDto">producto con los campos a modificar</param>
 /// <returns>not found si no se encuentra la id, bad request si hay errores en los campos a modificar, ok si se modifica</returns>
     [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<IResult> EditProduct(int id, AddEditProductDto editProductDto)
     {
-        if (await _productRepository.ProductExistsByNameAndType(editProductDto))
-        {
-            return TypedResults.BadRequest("Producto con el mismo nombre y tipo ya existe");
-        }
-
         if (null == await _categoryRepository.GetCategoryById(editProductDto.CategoryId))
         {
             return TypedResults.BadRequest("Categoría ingresada no existe");

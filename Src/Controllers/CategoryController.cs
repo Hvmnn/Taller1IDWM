@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Taller1IDWM.Src.Models;
 using Taller1IDWM.Src.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Taller1IDWM.Src.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class CategoryController(ICategoryRepository categoryRepository) : ControllerBase
 {

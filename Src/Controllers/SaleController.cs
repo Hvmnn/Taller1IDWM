@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Taller1IDWM.Src.DTOs.Product;
 using Taller1IDWM.Src.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Taller1IDWM.Src.Controllers;
 
@@ -19,6 +20,7 @@ public class SaleController(
 /// <param name="saleDto">datos de la venta a registrar</param>
 /// <returns>bad request si hay errores en los parámetros ingresados, created si se logra registrar la venta</returns>
     [HttpPost]
+    [Authorize(Roles = "User")]
     public async Task<IResult> MakeSale(MakeSaleDto saleDto)
     {
 
@@ -47,6 +49,7 @@ public class SaleController(
 /// </summary>
 /// <returns>lista de las compras registradas</returns>
     [HttpGet]
+    [Authorize(Roles = "Admin")]
     public async Task<IResult> GetSales()
     {
 
@@ -60,6 +63,7 @@ public class SaleController(
     /// <param name="userId">id del usuario</param>  
     /// <returns>"BadRequest" si no se encuenta el usuario, lista de sus compras si encuentra el usuario </returns> 
     [HttpGet("user/{userId}")]
+    [Authorize(Roles = "User")]
     public async Task<IResult> GetSales(int userId)
     {
         if (!await _userRepository.UserExistsById(userId))
