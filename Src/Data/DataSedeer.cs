@@ -42,12 +42,12 @@ namespace Taller1IDWM.Src.Data
                     {
                         var user = new User
                         {
-                            Name = "Nelson Soto",
+                            Name = "Ignacio Mancilla",
                             Gender = "Masculino",
-                            Birthdate = DateTime.Parse("May 29, 1998"),
-                            Rut = "199626086",
-                            Email = "nelson.soto@gmail.com",
-                            Password = BCrypt.Net.BCrypt.HashPassword("password"),
+                            Birthdate = DateTime.Parse("Oct 25, 2000"),
+                            Rut = "204166994",
+                            Email = "ignacio.mancilla@gmail.com",
+                            Password = BCrypt.Net.BCrypt.HashPassword("P4ssw0rd"),
                             RoleId = adminRole.Id,
                             Role = adminRole
                         };
