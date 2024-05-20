@@ -22,5 +22,10 @@ public class UserRepository(DataContext dataContext) : IUserRepository
     public async Task<bool> SaveChangesAsync()
     {
         return 0 < await _dataContext.SaveChangesAsync();
-    }    
-} 
+    }
+
+    public async Task<bool> UserExistsById(int id)
+    {
+        return await _dataContext.Users.AnyAsync(x => x.Id == id);
+    }
+}
