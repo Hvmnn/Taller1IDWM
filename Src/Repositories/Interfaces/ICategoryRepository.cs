@@ -6,4 +6,6 @@ public interface ICategoryRepository
     Task<Category?> GetCategoryById(int id);
 
     Task<Category?> GetCategoryByName(string name);
+
+    Task<IEnumerable<Category>> GetCategories();
 }
