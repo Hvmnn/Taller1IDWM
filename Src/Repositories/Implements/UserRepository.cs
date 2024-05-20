@@ -96,8 +96,6 @@ public class UserRepository(DataContext dataContext) : IUserRepository
 
         return true;
     }
-} 
-    }
 
     public async Task<bool> UserExistsById(int id)
     {

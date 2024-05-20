@@ -2,8 +2,6 @@ using AutoMapper;
 using Taller1IDWM.Src.DTOs.Account;
 using Taller1IDWM.Src.DTOs.Product;
 using Taller1IDWM.Src.DTOs.User;
-using Taller1IDWM.Src.DTOs.Account;
-using Taller1IDWM.Src.DTOs.User;
 using Taller1IDWM.Src.Models;
 
 namespace courses_dotnet_api.Src.Helpers;
@@ -22,7 +20,6 @@ public class AutoMapperProfiles : Profile
         CreateMap<MakeSaleDto, Sale>();
         CreateMap<Sale, GetSaleDto>();
         CreateMap<Sale, GetUserSaleDto>();
-        CreateMap<ProductDto, Product>();
         CreateMap<User, CredentialDto>();
         CreateMap<User, UserDto>();
     }
