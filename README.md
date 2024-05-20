@@ -1,3 +1,9 @@
+## Contributors
+1. Nelson Eduardo Soto Sánchez / 19.962.608-6 / nelson.soto@alumnos.ucn.cl
+2. Felipe Sebastian Hamen Bravo / 20.784.241-9 / felipe.hamen@alumnos.ucn.cl
+
+
+
 ## Installation
 
 Before getting started, ensure that you have .NET SDK 7 installed.
